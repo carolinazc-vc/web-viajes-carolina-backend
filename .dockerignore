@@ -3,3 +3,12 @@
 !build/*-runner.jar
 !build/lib/*
 !build/quarkus-app/*
+
+.git
+.github
+.idea
+.vscode
+*.iml
+.gradle
+build/tmp
+build/reports
