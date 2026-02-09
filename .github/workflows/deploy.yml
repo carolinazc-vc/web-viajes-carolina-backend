@@ -102,11 +102,4 @@ jobs:
           gcloud compute ssh "${{ secrets.VM_NAME }}" \
             --zone "${{ secrets.VM_ZONE }}" \
             --tunnel-through-iap \
-            --command "cd ~/app && docker compose pull backend && docker compose up -d"
-
-      - name: Cleanup old Docker images
-        run: |
-          gcloud compute ssh "${{ secrets.VM_NAME }}" \
-            --zone "${{ secrets.VM_ZONE }}" \
-            --tunnel-through-iap \
-            --command "docker image prune -f"
+            --command "cd /opt/web-vc && sudo docker compose pull backend && sudo docker compose up -d && sudo docker image prune -f"
