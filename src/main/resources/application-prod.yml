@@ -3,8 +3,8 @@ quarkus:
     host: 0.0.0.0
     port: ${PORT:8080}
     cors:
-      # En prod NO localhost. Define tu frontend real o usa env var.
-      origins: ${CORS_ORIGINS:https://TU-FRONTEND.com}
+      # Orígenes permitidos en producción (Firebase Hosting y dominio principal)
+      origins: "https://web-viajes-carolina.web.app,https://web-viajes-carolina.firebaseapp.com,https://viajescarolina.com,https://www.viajescarolina.com"
       methods: "GET,POST,PUT,DELETE,OPTIONS,PATCH"
       headers: "Content-Type,Authorization,X-Requested-With,Accept"
       exposed-headers: "Content-Type,Authorization"
