@@ -1,0 +1,41 @@
+quarkus:
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: 1jerete1
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/web-viajes-carolina
+      max-size: 20
+  hibernate-orm:
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    schema-management:
+      strategy: none
+    validate-schema: false
+  http:
+    port: 8080
+    cors:
+      # Nota: Quarkus YAML no soporta wildcards, por eso usamos el CorsFilter para ngrok
+      origins: "http://localhost:4200,http://localhost:3000,http://localhost:8080"
+      methods: "GET,POST,PUT,DELETE,OPTIONS,PATCH"
+      headers: "Content-Type,Authorization,X-Requested-With,Accept"
+      exposed-headers: "Content-Type,Authorization"
+      access-control-max-age: 86400
+      access-control-allow-credentials: true
+  application:
+    name: viajes-carolina-web-backend
+    version: 1.0.0
+  rest-client:
+    facebook-graph-api:
+      url: https://graph.facebook.com/v24.0
+
+# Configuración de Facebook API
+facebook:
+  api:
+    version: v24.0
+  page:
+    id: 108156039053235
+    token: ${FACEBOOK_PAGE_TOKEN:}
+
+# Configuración de promociones
+promotions:
+  include-facebook: false
