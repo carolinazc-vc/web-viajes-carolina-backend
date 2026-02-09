@@ -31,7 +31,9 @@ jobs:
         run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
 
       - name: Build Quarkus (Gradle)
-        run: ./gradlew build -x test
+        run: |
+          chmod +x ./gradlew
+          ./gradlew build -x test
 
       - name: Build & Push Image
         run: |
