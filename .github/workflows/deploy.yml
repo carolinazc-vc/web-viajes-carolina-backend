@@ -102,4 +102,4 @@ jobs:
           gcloud compute ssh "${{ secrets.VM_NAME }}" \
             --zone "${{ secrets.VM_ZONE }}" \
             --tunnel-through-iap \
-            --command "cd /opt/web-vc && sudo docker compose pull backend && sudo docker compose up -d && sudo docker image prune -f"
+            --command "gcloud auth configure-docker us-central1-docker.pkg.dev --quiet && sudo cp -r ~/.docker /root/.docker 2>/dev/null || true && cd /opt/web-vc && sudo docker compose pull backend && sudo docker compose up -d && sudo docker image prune -f"
